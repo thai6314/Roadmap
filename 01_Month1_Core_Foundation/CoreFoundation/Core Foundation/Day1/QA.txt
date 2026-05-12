@@ -1,0 +1,20 @@
+//
+//  QA.swift
+//  Core Foundation
+//
+//  Created by ThaiDV on 12/5/26.
+//
+
+/// Deep dive Retain Cycle & Memory Graph.
+
+1. ARC (Automatic Reference Counting) hoạt động thế nào?
+
+ARC là một cơ chế tự động đếm số lượng các tham chiếu giữa các đối tượng.
+- khi số lượng tham chiếu lớn hơn 0 thì sẽ gây ra hiện tượng Retain Cycle.
+- khi số lượng tham chiếu bằng 0 thì hệ thống sẽ tự động giải phóng bộ nhớ.
+
+Vậy khi nào thì ARC sẽ gây ra hiện tượng Retain Cycle?
+- Retain cycle xảy ra khi có một hoặc nhiều tham chiếu (đối tượng) không bị hủy bỏ vẫn còn được sử dụng. Việc tham chiếu không bị hủy bỏ nguyên nhân là do tồn tại một vòng lặp tham chiếu mạnh (strong) - xuất hiện khi có 2 đối tượng tham chiếu mạnh lẫn nhau.
+- Để tránh xảy ra vấn đề này, hãy đảm bảo không có bất kỳ một vòng lặp tham chiếu mạnh nào giữa các đối tượng bằng cách sử dụng weak hoặc unowned. Khi sử dụng weak và unowned thì tham chiếu sẽ trở thành một tham chiếu yếu - tham chiếu này sẽ bị hủy bỏ khi một trong 2 đối tượng bị hủy.
+
+
